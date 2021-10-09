@@ -5,7 +5,7 @@
     background-color: #000000;
     width:300px;
     height: 400px;
-    border-radius: 15px;
+    border-radius: 20px;
     position:absolute;
     left:50%;
     top:50%;
@@ -25,19 +25,19 @@
     line-height: 45px;
 }
 
-#second_output{
-    width: 85%;
+#previous_output{
+    width: 90%;
     height: 50px;
-    font-size: 30px;
+    font-size: 25px;
     /*background-color: violet;*/
 
 }
 
-#first_output{
-    font-size: 40px;
-    width:85%;
+#current_output{
+    font-size: 45px;
+    width:90%;
     height: 50px;
-    /* background-color: turquoise;  */
+    /* background-color: turquoise;*/  
 
 }
 
