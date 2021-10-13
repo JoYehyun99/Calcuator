@@ -29,6 +29,9 @@
     width: 90%;
     height: 50px;
     font-size: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     /*background-color: violet;*/
 
 }
@@ -37,7 +40,10 @@
     font-size: 45px;
     width:90%;
     height: 50px;
-    /* background-color: turquoise;*/  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*background-color: turquoise;*/  
 
 }
 
