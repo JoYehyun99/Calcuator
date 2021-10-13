@@ -1,6 +1,5 @@
 const nums = document.querySelectorAll(".btn_num");
 const op = document.querySelectorAll(".btn_op");
-//const modi = document.querySelectorAll(".btn_modi");
 
 const ac = document.getElementById("AC");
 const del = document.getElementById("del");
@@ -8,8 +7,8 @@ const del = document.getElementById("del");
 const prev = document.getElementById("previous_output");
 const curr = document.getElementById("current_output");
 
-let num1;
-let num2;
+let num1 ="";
+let num2="";
 let operator;
 
 
@@ -46,27 +45,32 @@ function printNum(e){
 
 function setOperator(e){
     if(e.target.id == "equal"){
-        if(curr.innerText == ""){
-            num2 = num1;
+        if(curr.innerText == "" || operator == null){
+            return;
         }else{
         num2 = curr.innerHTML;
         }
-        prev.innerHTML = `${num1} ${operator} ${num2}`;
+        prev.innerHTML = `${num1}${operator}${num2}`;
         curr.innerHTML= calculate(operator,parseFloat(num1),parseFloat(num2));
         num1 = curr.innerHTML;
         operator = null;
     }
     else{
+        if(operator != null || num1 === ""){
+            return;
+        }
+        else{
         operator = e.target.innerHTML;
         num1 = curr.innerHTML;
         prev.innerHTML = `${num1} ${operator}`;
         curr.innerHTML ="";
+        }
     }
 }
 
 function allClear(){
-    num1 = 0;
-    num2= 0;
+    num1 = "";
+    num2= "";
     operator = null;
     curr.innerHTML="";
     prev.innerHTML="";
