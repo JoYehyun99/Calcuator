@@ -69,14 +69,22 @@ button{
 .btn_num{
     background-color: #333333;
     color:white;
-    
+}
+.btn_num:hover{
+    background-color: #686868;
 }
 
 .btn_op{
     background-color:#f1a33c;
     color:white;
 }
+.btn_op:hover{
+    background-color:#f5bd74;
+}
 
 .btn_modi{
     background-color: #a5a5a5;
+}
+.btn_modi:hover{
+    background-color: #e9e7e7;
 }

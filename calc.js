@@ -7,70 +7,71 @@ const del = document.getElementById("del");
 const prev = document.getElementById("previous_output");
 const curr = document.getElementById("current_output");
 
-let num1 ="";
-let num2="";
+let num1 = "";
+let num2 = "";
 let operator;
 
 
 function calculate(operator, num1, num2){
-
-    let result;
     switch(operator){
         case "+" :
-             result = num1 + num2;
-             break;
+             return num1 + num2;
+
         case "÷" :
-             result = num1 / num2;
-             break;
-        case "-" :
-             result = num1 - num2;
-             break;
-        case "×" :
-             result = num1 * num2;
-             break;
+            return num1 / num2;
              
+        case "-" :
+            return num1 - num2;
+
+        case "×" :
+            return num1 * num2;  
     }
-    return result;
 }
 
 function printNum(e){
-
-    if(operator != null){    
-        curr.innerHTML += e.target.innerHTML;
-    }
-    else{
-        curr.innerHTML += e.target.innerHTML;
-    }
+    curr.innerHTML += e.target.innerHTML;
 }
 
 function setOperator(e){
-    if(e.target.id == "equal"){
+
+    if(e.target.id == "equal"){ // click '=' btn
         if(curr.innerText == "" || operator == null){
             return;
-        }else{
-        num2 = curr.innerHTML;
         }
+        num2 = curr.innerHTML;
         prev.innerHTML = `${num1}${operator}${num2}`;
         curr.innerHTML= calculate(operator,parseFloat(num1),parseFloat(num2));
         num1 = curr.innerHTML;
         operator = null;
     }
-    else{
-        if(operator != null || num1 === ""){
+    else{ //click operator btn
+        if(operator != null){
+            if(curr.innerText != "" && prev.innerText != ""){
+                let result;
+                num2 = curr.innerText;
+                curr.innerText ="";
+                result = calculate(operator,parseFloat(num1),parseFloat(num2));
+                operator = e.target.innerHTML;
+                prev.innerText = `${result} ${operator}`;
+                num1 = result;
+            }
+            return;
+        }
+        else if(curr.innerText == ""){
             return;
         }
         else{
-        operator = e.target.innerHTML;
-        num1 = curr.innerHTML;
-        prev.innerHTML = `${num1} ${operator}`;
-        curr.innerHTML ="";
+            operator = e.target.innerHTML;
+            num1 = curr.innerHTML;
+            prev.innerHTML = `${num1} ${operator}`;
+            curr.innerHTML ="";
         }
     }
 }
 
 function allClear(){
     num1 = "";
-    num2= "";
+    num2 = "";
     operator = null;
     curr.innerHTML="";
     prev.innerHTML="";
@@ -85,9 +86,7 @@ function checkPoint(){
     if(check == -1){
         curr.innerHTML += ".";
     }
-    else{
-        return;
-    }
+    return;
 }
 
 
